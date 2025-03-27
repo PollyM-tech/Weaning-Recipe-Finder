@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color:#360101;
+    color: #FFD6EC;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+nav {
+    background-color: rgb(34, 33, 33);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+
+nav h1 {
+    font-size: 24px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+#search-form {
+    display: flex;
+    margin-left: 20px;
+    flex-grow: 1;
+    min-width: 200px;
+    max-width: 600px;
+  
+}
+
+.searchCard {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    width: 100%;
+    text-align: center;
+}
+
+#search-btn {
+    background-color: #FFD6EC;
+    color: rgb(245, 237, 237);
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+#search-btn:hover {
+    background-color: rgb(238, 187, 243);
+}
+
+.recipe-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+.recipe-card{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    color: rgb(26, 25, 25);
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 14px;
+    max-width: 350px;
+}
+.recipe-card button{
+font-size: 15px;
+font-weight: 600;
+padding: 3px;
+border-radius:6px;
+cursor: pointer;
+margin: 12px auto;
+background-color:rgb(231, 12, 12);
+border: none;
+color: rgb(255, 252, 252);
+}
+.recipe-card button:hover{
+    background-color:  rgb(185, 118, 101);
+}
+
+.recipe-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+}
+
+@media (max-width: 450px) {
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    nav h1 {
+        text-align: center;
+    }
+    
+    #search-form {
+        margin: 0;
+        width: 100%;
+    }
+    
+    .recipe-container {
+        padding: 15px;
+        grid-template-columns: 1fr;
+    }
+}
