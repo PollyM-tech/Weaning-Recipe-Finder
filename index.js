@@ -1,13 +1,83 @@
 let searchTerm = "";
+let currentCategory = "";
 
 document.addEventListener("DOMContentLoaded", () => {
     const recipeContainer = document.querySelector(".recipe-container");
     const searchBtn = document.getElementById("search-btn");
     const searchInput = document.querySelector(".searchCard");
-   
+    const categoryButtonsContainer = document.querySelector(".category-buttons");
+    
     searchBtn.addEventListener("click", handleSearch);
 
+    fetchCategories();
     fetchRecipes("soup"); 
+
+    async function fetchCategories() {
+        try {
+            const response = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php");
+            const data = await response.json();
+            
+            if (data.categories) {
+                showCategories(data.categories);
+            }
+        } catch (error) {
+            console.error("Error fetching categories:", error);
+        }
+    }
+
+    function showCategories(categories) {
+        const allButton = document.createElement("button");
+        allButton.textContent = "All";
+        allButton.className = "category-btn active";
+        allButton.addEventListener("click", () => {
+            document.querySelectorAll(".category-btn").forEach(btn => btn.classList.remove("active"));
+            allButton.classList.add("active");
+            currentCategory = "";
+            fetchRecipes(searchTerm || "soup");
+        });
+        categoryButtonsContainer.appendChild(allButton);
+
+        categories.forEach(category => {
+            const button = document.createElement("button");
+            button.textContent = category.strCategory;
+            button.className = "category-btn";
+            button.addEventListener("click", () => {
+                document.querySelectorAll(".category-btn").forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+                currentCategory = category.strCategory;
+                if (searchTerm) {
+                    fetchRecipes(searchTerm);
+                } else {
+                    fetchRecipesByCategory(currentCategory);
+                }
+            });
+            categoryButtonsContainer.appendChild(button);
+        });
+    }
+
+    async function fetchRecipesByCategory(category) {
+        try {
+            const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+            const data = await response.json();
+            
+            recipeContainer.innerHTML = "";
+            
+            if (data.meals) {
+                const recipePromises = data.meals.map(meal => 
+                    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`)
+                        .then(res => res.json())
+                );
+                
+                const recipes = await Promise.all(recipePromises);
+                recipes.forEach(recipe => showRecipe(recipe.meals[0]));
+            } else {
+                recipeContainer.innerHTML = "<p>No recipes found in this category.</p>";
+            }
+        } catch (error) {
+            console.error("Error fetching recipes by category:", error);
+            recipeContainer.innerHTML = "<p>Loading recipes failed. Try later.</p>";
+        }
+    }
 
     async function fetchRecipes(query) {
         try {
@@ -17,7 +87,16 @@ document.addEventListener("DOMContentLoaded", () => {
             recipeContainer.innerHTML = "";
             
             if (data.meals) {
-                data.meals.forEach(recipe => showRecipe(recipe));
+                let filteredMeals = data.meals;
+                if (currentCategory) {
+                    filteredMeals = data.meals.filter(meal => meal.strCategory === currentCategory);
+                }
+                
+                if (filteredMeals.length > 0) {
+                    filteredMeals.forEach(recipe => showRecipe(recipe));
+                } else {
+                    recipeContainer.innerHTML = `<p>No recipes found for "${query}" in ${currentCategory} category.</p>`;
+                }
             } else {
                 recipeContainer.innerHTML = "<p>No recipes found. Try another term!</p>";
             }
@@ -155,7 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
             border-radius: 10px;
             cursor: pointer;
             font-size: 16px;
-            transition: all 0.3s;
+            transition: all 0.5s;
         }
         #submit-feedback:hover {
             background-color:rgb(94, 111, 146);
@@ -234,7 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             setTimeout(() => {
                 feedbackMessage.textContent = "";
-            }, 3000);
-        }, 1000);
+            }, 5000);
+        }, 2000);
     });
 });
