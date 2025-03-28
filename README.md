@@ -1,52 +1,38 @@
-# Weaning Recipe Finder 🍽️
+# 👶 Weaning Recipe Finder 
 
-![GitHub last commit](https://img.shields.io/github/last-commit/PollyM-tech/Weaning-Recipe-Finder)
-![GitHub Pages](https://img.shields.io/badge/Deployment-GitHub%20Pages-blue)
+_A simple tool to help parents find healthy meals for babies starting solid foods.
 
-A web application that helps parents discover nutritious meal ideas for toddlers during the weaning phase.
+## What is this? 🤔
+This is a website that helps parents:
+- Find simple recipes for babies starting solids
+- Search for meals by name (like "pie" or "soup")
+- Filter by food types (vegetarian, side, etc.)
+- See complete cooking instructions
 
-## Live Demo
-➡️ [Try it now on GitHub Pages](https://pollym-tech.github.io/Weaning-Recipe-Finder/)
+## How to Use It 🏃‍♀️
+1. **Search for recipes**: Type anything like "soup" or "apple"
+2. **Filter foods**: Click buttons like "Vegetarian" or "side"
+3. **See full recipes**: Click any meal to view:
+   - Ingredients list
+   - Step-by-step instructions
+   - Cooking tips
 
-## Features ✨
+## Try It Now! 🌐
+➡️ **[Click here for the live website](https://github.com/PollyM-tech/Weaning-Recipe-Finder)**
 
-### 🔍 Search Functionality
-- Find weaning recipes by name or keywords (e.g., "seafood", "soup", or "pie")
-- Real-time search results as you type
+Works on:
+- 📱 Phones
+- 💻 Computers
+- 🖥️ Tablets
 
-### 🗂️ Category Filters
-- Filter recipes by food type:
-  - Vegetarian
-  - Starter
-  - Side
-  - Dessert
-  - And more!
+## For Developers (Optional) 👩‍💻
+If you want to edit the code:
 
-### 📖 Recipe Details
-- Complete step-by-step cooking instructions
-- Precise ingredient measurements
-- Meal thumbnails for visual reference
-
-### 📱 Responsive Design
-- Fully optimized for:
-  - Mobile phones
-  - Tablets
-  - Desktop computers
-
- ## Technologies Used
- -html
- -css
- -javascript
-  -TheMealDB API
-
-### Quick Start
-1. Visit the [live demo](https://pollym-tech.github.io/Weaning-Recipe-Finder/)
-
-## Installation 
-
-### Local Development
 ```bash
+# 1. Copy this project
 git clone https://github.com/PollyM-tech/Weaning-Recipe-Finder.git
+
+# 2. Open the folder
 cd Weaning-Recipe-Finder
 
-Open index.html in your browser
+# 3. Open index.html in any web browser
