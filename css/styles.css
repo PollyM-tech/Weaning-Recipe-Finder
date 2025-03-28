@@ -6,8 +6,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: white;
-    color: #333;
+    background-color: rgb(20, 19, 19);
     font-family: Arial, sans-serif;
     min-height: 100vh;
 }
