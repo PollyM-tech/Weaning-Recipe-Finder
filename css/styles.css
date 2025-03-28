@@ -1,8 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    background-color:#360101;
-    color: #FFD6EC;
+    background-color:#310505;
+    color: #e7e2e5;
     font-family: Arial, sans-serif;
     min-height: 100vh;
 }
@@ -13,6 +13,7 @@ nav {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    color: #FFD6EC;
     
 }
 
