@@ -31,7 +31,6 @@ If you want to edit the code:
 ```bash
 # 1. Copy this project
 git clone https://github.com/PollyM-tech/Weaning-Recipe-Finder.git
-
 # 2. Open the folder
 cd Weaning-Recipe-Finder
 

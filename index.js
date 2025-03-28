@@ -14,11 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function fetchCategories() {
         try {
-            const response = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php");
+            const response = await fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list");
             const data = await response.json();
             
-            if (data.categories) {
-                showCategories(data.categories);
+            if (data.meals) {
+                showCategories(data.meals);
             }
         } catch (error) {
             console.error("Error fetching categories:", error);
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const recipeCard = document.createElement("div");
         recipeCard.className = "recipe-card";
         recipeCard.innerHTML = `
-            <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}">    
+            <img src="${recipe.strMealThumb}/preview" alt="${recipe.strMeal}">    
             <h3>${recipe.strMeal}</h3> 
             <p>Category: ${recipe.strCategory}</p>
         `;
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
         recipeContainer.innerHTML = `
             <div class="recipe-details">
                 <h2>${recipe.strMeal}</h2>
-                <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}">
+                <img src="${recipe.strMealThumb}/preview" alt="${recipe.strMeal}">
                 <h3>Ingredients:</h3>
                 <ul>${ingredients.map(ing => `<li>${ing}</li>`).join("")}</ul>
                 <h3>Instructions:</h3>
@@ -156,16 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        const backBtn = document.getElementById("back-btn");
-        backBtn.style.backgroundColor = "#4285f4";
-        backBtn.style.color = "white";
-        backBtn.style.border = "none";
-        backBtn.style.padding = "10px 20px";
-        backBtn.style.borderRadius = "5px";
-        backBtn.style.fontSize = "16px";
-        backBtn.style.cursor = "pointer";
-        backBtn.style.marginTop = "20px";
-        backBtn.addEventListener("click", () => fetchRecipes(searchTerm || "soup"));
+        document.getElementById("back-btn").addEventListener("click", () => fetchRecipes(searchTerm || "soup"));
     }
 
     function handleSearch(e) {
@@ -194,67 +185,6 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.body.appendChild(footer);
 
-    const style = document.createElement("style");
-    style.textContent = `
-        footer {
-            background-color: #360101;
-            padding: 20px;
-            color: #FFD6EC;
-            margin-top: 40px;
-        }
-        .feedback-section {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .rating-stars {
-            font-size: 24px;
-            margin: 10px 0;
-        }
-        .star {
-            color: #FFD6EC;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-        .star:hover, .star.active {
-            color: gold;
-        }
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border-radius: 10px;
-            margin: 10px 0;
-            min-height: 40px;
-        }
-        #submit-feedback {
-            background-color:rgb(59, 130, 245);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.5s;
-        }
-        #submit-feedback:hover {
-            background-color:rgb(94, 111, 146);
-            transform: translateY(-2px);
-        }
-        .feedback-message {
-            margin-top: 8px;
-            min-height: 15px;
-        }
-        @media (max-width: 680px) {
-            .rating-stars {
-                font-size: 20px;
-            }
-            #submit-feedback {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
-        }
-    `;
-    document.head.appendChild(style);
 
     const stars = document.querySelectorAll(".star");
     const feedbackTextarea = document.querySelector(".feedback-section textarea");
@@ -269,23 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
             stars.forEach(s => {
                 s.classList.toggle("active", parseInt(s.dataset.value) <= selectedRating);
             });
-        });
-        
-        star.addEventListener("mouseover", () => {
-            if (!selectedRating) {
-                const value = parseInt(star.dataset.value);
-                stars.forEach(s => {
-                    s.style.color = parseInt(s.dataset.value) <= value ? "gold" : "#555";
-                });
-            }
-        });
-        
-        star.addEventListener("mouseout", () => {
-            if (!selectedRating) {
-                stars.forEach(s => {
-                    s.style.color = "#555";
-                });
-            }
         });
     });
     

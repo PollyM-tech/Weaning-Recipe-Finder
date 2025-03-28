@@ -179,6 +179,132 @@ nav h1 {
     margin-bottom: 10px;
 }
 
+footer {
+    background-color: #310505;
+    padding: 40px 0;
+    color: #ecf0f1;
+    margin-top: 60px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-section {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.feedback-section h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.rating-stars {
+    font-size: 32px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.star {
+    color:#dfdbd6;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.star:hover {
+    transform: scale(1.2);
+    color: #f3b552;
+}
+
+.star.active {
+    color:  #d1b742e8;
+    transform: scale(1.1);
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 15px 0;
+    min-height: 60px;
+    border: 2px solid #40474b;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    transition: all 0.5s ease;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+#submit-feedback {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+#submit-feedback:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+#submit-feedback:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-message {
+    margin-top: 15px;
+    min-height: 20px;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 30px 0;
+        margin-top: 40px;
+    }
+    
+    .feedback-section h3 {
+        font-size: 20px;
+    }
+    
+    .rating-stars {
+        font-size: 28px;
+    }
+    
+    textarea {
+        min-height: 80px;
+        padding: 12px;
+    }
+    
+    #submit-feedback {
+        padding: 10px 25px;
+        font-size: 16px;
+    }
+}
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -238,5 +364,19 @@ nav h1 {
     
     nav h1 {
         font-size: 20px;
+    }
+    .rating-stars {
+        font-size: 24px;
+        gap: 8px;
+    }
+    
+    textarea {
+        min-height: 70px;
+        font-size: 14px;
+    }
+    
+    #submit-feedback {
+        padding: 8px 20px;
+        font-size: 15px;
     }
 }
