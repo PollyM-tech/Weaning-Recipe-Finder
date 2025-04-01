@@ -1,3 +1,11 @@
+//
+
+
+
+
+
+
+
 let searchTerm = "";
 let currentCategory = "";
 

@@ -28,10 +28,14 @@ Works on:
 ## For Developers (Optional) 👩‍💻
 If you want to edit the code:
 
-```bash
-# 1. Copy this project
-git clone https://github.com/PollyM-tech/Weaning-Recipe-Finder.git
-# 2. Open the folder
-cd Weaning-Recipe-Finder
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# 3. Open index.html in any web browser
+## 📱 App Screenshot
+[![Recipe Finder App](https://i.imgur.com/XXXXXX.png)](https://imgur.com/a/1FtGTdm)
+*Click image to view full details*
+
+## License 📜
+This project is licensed under the **MIT License** - see the [LICENSE.md](LICENSE.md) file for details.
+
+**Important Note:**  
+Recipe data is provided by [TheMealDB API](https://www.themealdb.com/) under their [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
